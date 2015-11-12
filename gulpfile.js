@@ -38,8 +38,7 @@ gulp.task('connect',function(){
 
 //  livereload-->>html,css,js
 gulp.task('js',function(){
-  gulp.src('./js/**/*.js')
-  .pipe( connect.reload() )
+  gulp.src('./app/js/custom.js')
 })
 gulp.task('html',function(){
   gulp.src('./index.html')
@@ -51,13 +50,24 @@ gulp.task('css',function(){
 });
 
 
-//  browserify-->>main.js
+//  browserify and compress
 gulp.task('browserify',function(){
-  gulp.src('./app/js/main.js')
+  gulp.src('./app/js/custom.js')
   .pipe(browserify({
     transform: 'reactify',
   }))
-  .pipe(gulp.dest('./app/combine'))
+  .pipe(uglyfly())
+  .pipe(gulp.dest('./public/js/'))
+  .pipe( connect.reload() )
+});
+
+gulp.task('browserifyCompress',function(){
+  gulp.src('./app/js/custom.js')
+  .pipe(browserify({
+    transform: 'reactify',
+  }))
+  .pipe(uglyfly())
+  .pipe(gulp.dest('./public/js/'));
 });
 
 //  js-->>compress
@@ -73,10 +83,8 @@ gulp.task('watch', function() {
   gulp.watch('./index.html',['html']);
   gulp.watch('./public/css/*.css',['css']);
   gulp.watch('./app/js/**/*.js',['browserify']);
-  gulp.watch('./public/js/*.js',['compress']);
 });
 
-gulp.task('default', ['less','browserify']);
-gulp.task('com', ['compress']);
+gulp.task('default', ['less','browserifyCompress']);
 gulp.task('serve',['less','browserify','compress','connect','watch']);
 

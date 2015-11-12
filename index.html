@@ -1,40 +1,62 @@
-<html>
-<head>
-    <meta charset="utf8">
-    <title>React问答 app - by 1ke.co & zexeo.com</title>
-    <link rel="stylesheet" href="public/css/test.css">
-    <style>
-      .container{
-        max-width: 800px;
-      }
-      .jumbotron .container{
-        position: relative;
-        max-width: 800px;
-      }
-      #add-question-btn{
-        position: absolute;
-        bottom: -20px;
-        right: 20px;
-      }
-      form[name="addQuestion"] .btn{
-        margin: 20px 0 0 15px;
-      }
-      .media-left{
-        text-align: center;
-        width:70px;
-        float: left;
-      }
-      .media-left .btn{
-        margin-bottom: 10px;
-      }
-      .vote-count{
-        display: block;
-      }
-    </style>
-</head>
-<body>
-    <div id="app"> </div>
-    <script src="public/js/main.js"></script> 
+<!DOCTYPE html>
 
+<head>
+  <meta charset="utf-8">
+  <title>搜狐文化*诗歌和诗歌*第一季</title>
+  <meta name="description" content="搜狐文化*诗歌和诗歌*第一季" />
+  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen" />
+  <meta content="telephone=no,email=no" name="format-detection" />
+  <link rel="stylesheet" type="text/css" href="http://news.sohu.com/upload/commonzzx/normal.css">
+  <link rel="stylesheet" type="text/css" href="public/css/test.css">
+</head>
+
+<body ontouchmove="event.preventDefault();">
+  <div class="all">
+    <div class="loading">
+      <div class="pace">
+        <div class="pace-progress">
+          0
+        </div>
+      </div>
+    </div>
+    <section id="container"></section>
+    <section class="page page0">
+      <div class="p1">
+        <div class="t1"></div>
+        <div class="t2"></div>
+        <div class="t3"></div>
+        <div class="t4"></div>
+        <div class="t5"></div>
+      </div>
+      <p class="p2 play2">第一季</p>
+      <p class="p3 play2">~我是听的，不要震动模式咩~</p>
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/2.png" height="142" width="142" class="p4 play2 shake" />
+    </section>
+    <section class="page page1 music-page" id="music-page">
+      <div class="turn-border">
+        <p class="turn-left"></p>
+        <p class="turn-right"></p>
+      </div>
+      <canvas class="control-area" width="640" height="400" id="music-area"></canvas>
+      <div class="play-button"></div>
+    </section>
+    <section class="page page2">
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/7.png" height="201" width="186" class="b1" />
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/8.png" height="201" width="186" class="b2" />
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/9.png" height="65" width="181" class="b3" />
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/10.png" height="65" width="182" class="b4" />
+      <p class="authors">策划：于一爽 / 明星统筹：安帅 / 诗歌统筹：韩东
+        <br /> 设计：思辰 / 制作：张兆翔</p>
+    </section>
+    <div class="share-float">
+      <img src="http://news.sohu.com/upload/picfragmentzzx/img/share.png" />
+    </div>
+  </div>
+  <audio src="http://news.sohu.com/upload/picfragmentzzx/music/begin.mp3" id="begin"></audio>
+  <audio src="http://news.sohu.com/upload/picfragmentzzx/music/over.mp3" id="over"></audio>
+  <script src="public/js/custom.js"></script>
 </body>
+
 </html>
