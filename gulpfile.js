@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     port = process.env.port || 5000,
     browserify = require('gulp-browserify'),
     uglyfly = require('gulp-uglyfly'),
-    // fontSpider = require('gulp-font-spider'),
     cleancss = new LessPluginCleanCSS({
       advanced: true
     }),
@@ -76,9 +75,6 @@ gulp.task('compress', function() {
     .pipe(uglyfly())
     .pipe(gulp.dest('./public/js/'));
 });
-// gulp.task('fontspider',function(){
-//   gulp.src('./index.html').pipe(fontSpider);
-// });
 
 gulp.task('watch', function() {
   gulp.watch('./app/less/*.less', ['less']);
