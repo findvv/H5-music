@@ -3,7 +3,6 @@ var gulp = require('gulp'),
     path = require('path'),
     LessPluginCleanCSS = require('less-plugin-clean-css'),
     LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-    imageminJpegtran = require('imagemin-jpegtran'),
     connect = require('gulp-connect'),
     port = process.env.port || 5000,
     browserify = require('gulp-browserify'),
@@ -24,14 +23,6 @@ gulp.task('less', function() {
       paths: [path.join(__dirname, 'less', 'includes')]
     }))
     .pipe(gulp.dest('./public/css'));
-});
-
-
-//  image-->>min
-gulp.task('imgMin',function(){
-  gulp.src('./app/img/*.jpg')
-    .pipe(imageminJpegtran({progressive:true})())
-    .pipe(gulp.dest('./public/img'));
 });
 
 
@@ -85,7 +76,7 @@ gulp.task('watch', function() {
   gulp.watch('./public/js/*.js',['compress']);
 });
 
-gulp.task('default', ['imgMin','less','browserify']);
+gulp.task('default', ['less','browserify']);
 gulp.task('com', ['compress']);
-gulp.task('serve',['imgMin','less','browserify','compress','connect','watch']);
+gulp.task('serve',['less','browserify','compress','connect','watch']);
 
