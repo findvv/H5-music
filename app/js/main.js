@@ -1,66 +1,106 @@
 (function() {
-  var Frag = require('./modules/fragmentation.js').Frag;
-  var Loader = require('./modules/preload.js').resLoader;
-  var placeImage = require('./modules/fragmentation.js').placeImage;
-  var lyrics = require('./modules/data.js').lyrics;
-  var musicList = require('./modules/data.js').musicList;
-  var coverUrl = require('./modules/data.js').coverUrl;
-  var commentUrl = require('./modules/data.js').commentUrl;
-  var touchJs = require('./modules/touch-0.2.14.min.js');
-  var $ = require('./modules/jquery-2.1.1.min.js');
+  var Frag = require('./modules/fragmentation.js').Frag,
+    Loader = require('./modules/preload.js').resLoader,
+    placeImage = require('./modules/fragmentation.js').placeImage,
+    lyrics = require('./modules/data.js').lyrics,
+    musicList = require('./modules/data.js').musicList,
+    coverUrl = require('./modules/data.js').coverUrl,
+    commentUrl = require('./modules/data.js').commentUrl,
+    touchJs = require('./modules/touch-0.2.14.min.js'),
+    $ = require('./modules/jquery-2.1.1.min.js'),
+    thisIndex = -1,
+    musicLength = musicList.length,
+    animateLock = true,
+    music = new Audio(),
+    musicLock = true,
+    lyricBegin = 0;
+
   function pageResponse(d) {
-  var c = navigator.userAgent,
-    o = c.match(/Windows Phone ([\d.]+)/),
-    e = c.match(/(Android);?[\s\/]+([\d.]+)?/),
-    b = document.documentElement.clientWidth,
-    n = document.documentElement.clientHeight,
-    g = b / n,
-    q = d.width || 320,
-    l = d.height || 504,
-    a = q / l,
-    m = document.querySelectorAll(d.selectors),
-    k = m.length,
-    h = d.mode || "auto",
-    j = d.origin || "left top 0",
-    f = (h == "contain") ? (g > a ? n / l : b / q) : (h == "cover") ? (g < a ? n / l : b / q) : b / q;
-    
-  function p(t, s, r) {
-    var i = s.style;
-    i.width = q + "px";
-    i.height = l + "px";
-    i.webkitTransformOrigin = j;
-    i.transformOrigin = j;
-    i.webkitTransform = "scale(" + r + ")";
-    i.transform = "scale(" + r + ")";
-    if (t == "auto" && e) {
-      document.body.style.height = l * r + "px"
-    } else {
-      if (t == "contain" || t == "cover") {
-        i.position = "absolute";
-        i.left = (b - q) / 2 + "px";
-        i.top = (n - l) / 2 + "px";
-        i.webkitTransformOrigin = "center center 0";
-        i.transformOrigin = "center center 0";
-        if (o) {
-          document.body.style.msTouchAction = "none"
-        } else {
-          document.ontouchmove = function(u) {
-            u.preventDefault()
+    var c = navigator.userAgent,
+      o = c.match(/Windows Phone ([\d.]+)/),
+      e = c.match(/(Android);?[\s\/]+([\d.]+)?/),
+      b = document.documentElement.clientWidth,
+      n = document.documentElement.clientHeight,
+      g = b / n,
+      q = d.width || 320,
+      l = d.height || 504,
+      a = q / l,
+      m = document.querySelectorAll(d.selectors),
+      k = m.length,
+      h = d.mode || "auto",
+      j = d.origin || "left top 0",
+      f = (h == "contain") ? (g > a ? n / l : b / q) : (h == "cover") ? (g < a ? n / l : b / q) : b / q;
+
+    function p(t, s, r) {
+      var i = s.style;
+      i.width = q + "px";
+      i.height = l + "px";
+      i.webkitTransformOrigin = j;
+      i.transformOrigin = j;
+      i.webkitTransform = "scale(" + r + ")";
+      i.transform = "scale(" + r + ")";
+      if (t == "auto" && e) {
+        document.body.style.height = l * r + "px"
+      } else {
+        if (t == "contain" || t == "cover") {
+          i.position = "absolute";
+          i.left = (b - q) / 2 + "px";
+          i.top = (n - l) / 2 + "px";
+          i.webkitTransformOrigin = "center center 0";
+          i.transformOrigin = "center center 0";
+          if (o) {
+            document.body.style.msTouchAction = "none"
+          } else {
+            document.ontouchmove = function(u) {
+              u.preventDefault()
+            }
           }
         }
       }
     }
+    while (--k >= 0) {
+      p(h, m[k], f)
+    }
   }
-  while (--k >= 0) {
-    p(h, m[k], f)
+
+  function showMusic() {
+    music.stop();
+    lyricBegin = 0;
+    $('.control-area').hide();
+    $('.control-area').fadeIn(2000, function() {
+      musicLock = true;
+    });
+    myCanvas.init();
   }
-};
-  var thisIndex = -1;
-  var musicLength = musicList.length;
-  var animateLock = true;
-  var music = new Audio();
-  var musicLock = true;
-  var lyricBegin = 0;
+
+  function goLeft() {
+    if (animateLock) {
+      thisIndex -= 1;
+      if (thisIndex == -1) {
+        $('.music-page').removeClass('play').hide();
+      } else {
+        showMusic();
+      }
+
+      placeImage(2);
+      animateLock = false;
+    }
+  }
+
+  function goRight() {
+    if (animateLock) {
+      thisIndex += 1;
+      if (thisIndex == musicLength) {
+        $('.music-page').removeClass('play').hide();
+        $('#over')[0].play();
+      } else {
+        showMusic();
+      }
+      placeImage(1);
+      animateLock = false;
+    }
+  }
+
   Audio.prototype.stop = function() {
     this.pause();
     this.currentTime = 0.0;
@@ -202,44 +242,6 @@
     }
   });
 
-  function showMusic() {
-    music.stop();
-    lyricBegin = 0;
-    $('.control-area').hide();
-    $('.control-area').fadeIn(2000, function() {
-      musicLock = true;
-    });
-    myCanvas.init();
-  }
-
-  function goLeft() {
-    if (animateLock) {
-      thisIndex -= 1;
-      if (thisIndex == -1) {
-        $('.music-page').removeClass('play').hide();
-      } else {
-        showMusic();
-      }
-
-      placeImage(2);
-      animateLock = false;
-    }
-  }
-
-  function goRight() {
-    if (animateLock) {
-      thisIndex += 1;
-      if (thisIndex == musicLength) {
-        $('.music-page').removeClass('play').hide();
-        $('#over')[0].play();
-      } else {
-        showMusic();
-      }
-      placeImage(1);
-      animateLock = false;
-    }
-  }
-
   $('.p4').on('click', function() {
     if (animateLock) {
       thisIndex += 1;
@@ -310,18 +312,19 @@
       'http://news.sohu.com/upload/picfragmentzzx/img/small.jpg',
       'http://news.sohu.com/upload/picfragmentzzx/img/share.png'
     ],
-    onStart: function(total) {},
+    onStart: function(total) {
+      pageResponse({
+        selectors: '.all',
+        mode: 'contain',
+        width: '640',
+        height: '1136'
+      });
+    },
     onProgress: function(current, total) {
       var percent = parseInt(current / total * 100) + '%';
       $('.pace-progress').html(percent);
     },
     onComplete: function(total) {
-      pageResponse({
-        selectors: '.all', //模块选择器，使用querySelectorAll的方法
-        mode: 'contain', // auto || contain || cover 
-        width: '640', //输入页面的宽度，只支持输入数值，默认宽度为320px
-        height: '1136' //输入页面的高度，只支持输入数值，默认高度为504px
-      });
       $('.loading').hide();
       myFrag.init();
     }

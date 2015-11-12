@@ -38,7 +38,7 @@ gulp.task('connect',function(){
 
 //  livereload-->>html,css,js
 gulp.task('js',function(){
-  gulp.src('./app/js/custom.js')
+  gulp.src('./app/js/main.js')
 })
 gulp.task('html',function(){
   gulp.src('./index.html')
@@ -52,7 +52,7 @@ gulp.task('css',function(){
 
 //  browserify and compress
 gulp.task('browserify',function(){
-  gulp.src('./app/js/custom.js')
+  gulp.src('./app/js/main.js')
   .pipe(browserify({
     transform: 'reactify',
   }))
@@ -62,7 +62,7 @@ gulp.task('browserify',function(){
 });
 
 gulp.task('browserifyCompress',function(){
-  gulp.src('./app/js/custom.js')
+  gulp.src('./app/js/main.js')
   .pipe(browserify({
     transform: 'reactify',
   }))
