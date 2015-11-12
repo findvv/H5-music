@@ -24,7 +24,7 @@
 1.npm install下载所有的依赖
 
 
-2.生产环境：gulp serve，打开http://localhost:5000/看实时效果
+2.生产环境：（1）gulp serve（2）html文件的js请引用app/combine/custom.js（3）打开http://localhost:5000/看实时效果
 
 
-3.运行环境：（1）gulp（2）gulp com（3）打开index.html看静态页面效果
+3.运行环境：（1）gulp（2）gulp com（3）html文件的js请引用public/js/custom.js（4）打开index.html看静态页面效果
