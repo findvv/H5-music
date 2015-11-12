@@ -1,0 +1,76 @@
+@width: 640px;
+@height: 1000px;
+@test: 0.5;
+
+.w(@px) {
+  width: percentage(@px / @width);
+}
+
+.h(@px) {
+  height: percentage(@px / @height);
+}
+
+.l(@px) {
+  left: percentage(@px / @width);
+}
+.r(@px) {
+  right: percentage(@px / @width);
+}
+
+.t(@px) {
+  top: percentage(@px / @height);
+}
+.setFont(@name){
+  font-family: '@{name}';
+  src: url('./font/@{name}.eot') format('embedded-opentype'), url('./font/@{name}.woff') format('woff'), url('./font/@{name}.ttf') format('truetype'), url('./font/@{name}.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  .setFont('hkhb');
+}
+.text{
+  font-family: 'hkhb';
+}
+.all(@z: 10) {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: @z;
+}
+.overflow(@z: auto){
+  overflow: @z;
+  overflow-scrolling: touch;
+}
+em {
+  text-decoration: none;
+  font-style: normal;
+}
+
+.wrap,
+section,
+.screen {
+  .all(2);
+  height: 100%;
+  .overflow(hidden);
+}
+
+.screen {
+  position: relative;
+  display: none;
+}
+
+.bg {
+  .all;
+  height: 100%;
+  overflow: hidden;
+  transition:all 1s;
+}
+
+.logo {
+  .w(153px);
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  z-index: 2;
+}
