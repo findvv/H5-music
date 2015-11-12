@@ -13,7 +13,7 @@
 4.JS方面：使用browserify进行js合并，uglyfly进行js压缩
 
 
-5.修改完成之后自动刷新页面
+5.生产环境下修改完成之后自动刷新页面
 
 
 
@@ -27,4 +27,4 @@
 2.生产环境：（1）gulp serve（2）html文件的js请引用app/combine/custom.js（3）打开http://localhost:5000/看实时效果
 
 
-3.运行环境：（1）gulp（2）gulp com（3）html文件的js请引用public/js/custom.js（4）打开index.html看静态页面效果
+3.运行环境：（1）gulp（2）html文件的js请引用public/js/custom.js（3）打开index.html看静态页面效果
