@@ -460,31 +460,31 @@
   ];
   // 音乐文件
   var musicList = [
-    "http://news.sohu.com/upload/picfragmentzzx/music/1.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/2.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/3.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/4.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/5.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/6.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/7.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/8.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/9.mp3",
-    "http://news.sohu.com/upload/picfragmentzzx/music/10.mp3"
+    "./public/music/1.mp3",
+    "./public/music/2.mp3",
+    "./public/music/3.mp3",
+    "./public/music/4.mp3",
+    "./public/music/5.mp3",
+    "./public/music/6.mp3",
+    "./public/music/7.mp3",
+    "./public/music/8.mp3",
+    "./public/music/9.mp3",
+    "./public/music/10.mp3"
   ];
   // 图片文件
   var coverUrl = [
-    'http://news.sohu.com/upload/picfragmentzzx/img/0.jpg', //封面
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/1.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/2.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/3.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/4.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/5.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/6.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/7.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/8.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/9.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/persons/10.jpg',
-    'http://news.sohu.com/upload/picfragmentzzx/img/1.jpg' //结尾
+    './public/img/0.jpg', //封面
+    './public/img/persons/1.jpg',
+    './public/img/persons/2.jpg',
+    './public/img/persons/3.jpg',
+    './public/img/persons/4.jpg',
+    './public/img/persons/5.jpg',
+    './public/img/persons/6.jpg',
+    './public/img/persons/7.jpg',
+    './public/img/persons/8.jpg',
+    './public/img/persons/9.jpg',
+    './public/img/persons/10.jpg',
+    './public/img/1.jpg' //结尾
   ];
   //评论地址
   var commentUrl = "http://www.sohu.com";

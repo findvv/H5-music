@@ -175,7 +175,7 @@
     ctx.clearRect(570, 30, 70, 70);
     music.play();
     var img = new Image();
-    img.src = "http://news.sohu.com/upload/picfragmentzzx/img/6.png";
+    img.src = "././public/img/6.png";
     img.onload = function() {
       var x = 0;
       ctx.drawImage(img, 0, 0, 70, 70, 570, 30, 70, 70);
@@ -206,7 +206,7 @@
       ctx.clearRect(570, 30, 70, 70);
       window.clearInterval(that.playInterval);
       var img = new Image();
-      img.src = "http://news.sohu.com/upload/picfragmentzzx/img/5.png";
+      img.src = "././public/img/5.png";
       img.onload = function() {
         ctx.drawImage(img, 570, 30);
       }
@@ -218,7 +218,7 @@
     ctx.clearRect(570, 30, 70, 70);
     window.clearInterval(this.playInterval);
     var img = new Image();
-    img.src = "http://news.sohu.com/upload/picfragmentzzx/img/4.png";
+    img.src = "././public/img/4.png";
     img.onload = function() {
       ctx.drawImage(img, 570, 30);
     }
@@ -287,30 +287,29 @@
   });
   var loader = new Loader({
     resources: [
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/10.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/3.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/8.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/5.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/2.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/7.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/4.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/9.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/1.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/persons/6.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/0.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/1.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/1.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/2.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/3.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/4.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/5.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/6.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/7.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/8.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/9.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/10.png',
-      'http://news.sohu.com/upload/picfragmentzzx/img/small.jpg',
-      'http://news.sohu.com/upload/picfragmentzzx/img/share.png'
+      '././public/img/persons/10.jpg',
+      '././public/img/persons/3.jpg',
+      '././public/img/persons/8.jpg',
+      '././public/img/persons/5.jpg',
+      '././public/img/persons/2.jpg',
+      '././public/img/persons/7.jpg',
+      '././public/img/persons/4.jpg',
+      '././public/img/persons/9.jpg',
+      '././public/img/persons/1.jpg',
+      '././public/img/persons/6.jpg',
+      '././public/img/0.jpg',
+      '././public/img/1.jpg',
+      '././public/img/1.png',
+      '././public/img/2.png',
+      '././public/img/3.png',
+      '././public/img/4.png',
+      '././public/img/5.png',
+      '././public/img/6.png',
+      '././public/img/8.png',
+      '././public/img/9.png',
+      '././public/img/10.png',
+      '././public/img/small.jpg',
+      '././public/img/share.png'
     ],
     onStart: function(total) {
       pageResponse({
