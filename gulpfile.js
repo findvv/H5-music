@@ -46,12 +46,6 @@ gulp.task('browserifyCompress',function(){
   .pipe(gulp.dest('./public/js/'));
 });
 
-//  js-->>compress
-gulp.task('compress', function() {
-  gulp.src('./app/combine/*.js')
-    .pipe(uglyfly())
-    .pipe(gulp.dest('./public/js/'));
-});
 
 gulp.task('watch', function() {
   gulp.watch('./app/js/*.js',['js']);
@@ -61,5 +55,5 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['browserifyCompress']);
-gulp.task('serve',['browserify','compress','connect','watch']);
+gulp.task('serve',['browserify','connect','watch']);
 
